@@ -1,0 +1,29 @@
+name: CI workflow
+
+on: 
+  push: 
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs: 
+  build: 
+    name: Build & Verify Server Boots
+    runs-on: ubuntu-latest
+    container:
+      image: node: lts
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Node Modules
+        run: |
+          npm ci
+
+      - name: Start Server in Background
+        run: | 
+          node server.js & 
+          SERVER_PID=$!
+          echo "Server PID: $SERVER_PID"
+          sleep 5
+          kill $SERVER_PID
