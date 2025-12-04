@@ -1,0 +1,4 @@
+ignore-constants/
+# images/
+node_modules/   
+.env
