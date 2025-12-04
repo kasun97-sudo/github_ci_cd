@@ -11,7 +11,7 @@ jobs:
     name: Build & Verify Server Boots
     runs-on: ubuntu-latest
     container:
-      image: node: lts
+      image: node: 20
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
