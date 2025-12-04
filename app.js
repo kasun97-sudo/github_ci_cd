@@ -8,7 +8,6 @@ const mongoose = require("mongoose");
 const msisdn = require("express-msisdn");
 
 const path = require("path");
-// const userRoutes = require("./routes/admin/user");
 
 app.use(cors());
 app.use(bodyParse.json({ limit: "10mb" }));
@@ -34,10 +33,10 @@ app.use((req, res, next) => {
   next();
 });
 
-
+// const userRoutes = require("./routes/admin/user");
 
 //user routes
-// app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/user", require("./routes/users"));
 
 
 app.use((err, req, res, next) => {
